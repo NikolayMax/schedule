@@ -1,7 +1,34 @@
-.App {
+html,body, #root, .App{
+    height: 100%;
+}
+.App{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.App > svg{
   background-color: #1a2c48;
 }
 path{
   fill: transparent;
   stroke:#809b35;
+}
+[id='x-axis'] path, .axes path {
+  fill: #444;
+  stroke: #444;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+line {
+    stroke: #334f7b;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+}
+.guides use, .guides text {
+    fill: #fff;
+}
+polyline{
+    fill: transparent;
+    stroke: #969331;
+    transition: all 0.5s;
 }

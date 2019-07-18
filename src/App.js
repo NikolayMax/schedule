@@ -1,31 +1,20 @@
 import React, {Component} from 'react';
 import './App.css';
-
-class Schedule extends Component {
-    constructor(props){
-        super(props);
-    }
-    getRenderData(){
-        let {data} = this.props;
-        let time = 9;
-        return `M 0,0 ` + data.map((item, key)=>`L ${time * (key+1)},${item}`).join(' ');
-    }
-
-    render() {
-        return <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-                <path d={this.getRenderData()} />
-            </svg>;
-    }
-}
+import Schedule from './components/Schedule';
 
 class App extends Component {
     constructor(props){
         super(props);
         this.state = {data: []};
-
+        let i;
         setInterval(()=>{
-            this.setState({data:[...this.state.data, this.getRandomInt(0, 1000)]});
-        },500);
+            clearInterval(i);
+            let iFrom = this.getRandomInt(0, 500);
+            let iTo = this.getRandomInt(100, 200);
+            i = setInterval(()=>{
+                this.setState({data:[...this.state.data, this.getRandomInt(iFrom, iTo)]});
+            },500);
+        }, 5000);
     }
     getRandomInt(min, max) {
         min = Math.ceil(min);
